@@ -30,6 +30,7 @@ public class Perfil {
         this.apelido=apelido;
         this.instituicaoDeEnsino = instituicaoDeEnsino;
         this.enderecoImagem = enderecoImagem;
+        this.quantidadeFans=0;
     }
 
     /**
@@ -41,5 +42,9 @@ public class Perfil {
 
     public Long getId() {
         return id;
+    }
+
+    public String getApelido() {
+        return apelido;
     }
 }
