@@ -42,4 +42,8 @@ public class Perfil {
     public Long getId() {
         return id;
     }
+
+    public String getApelido() {
+        return apelido;
+    }
 }
