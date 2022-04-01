@@ -1,16 +1,10 @@
 package br.com.zup.edu.nossaredesocial.perfil;
 
-import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.OptimisticLockType;
-import org.hibernate.annotations.OptimisticLocking;
-
 import javax.persistence.*;
 
-import static br.com.zup.edu.nossaredesocial.perfil.Status.*;
+import static br.com.zup.edu.nossaredesocial.perfil.Status.PADRAO;
 
 @Entity
-@OptimisticLocking(type = OptimisticLockType.DIRTY)
-@DynamicUpdate
 public class Perfil {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +19,9 @@ public class Perfil {
     private String enderecoImagem;
 
     private long quantidadeFans;
+
+    @Version
+    private int versao;
 
     @Enumerated(EnumType.STRING)
     private Status status= PADRAO;
