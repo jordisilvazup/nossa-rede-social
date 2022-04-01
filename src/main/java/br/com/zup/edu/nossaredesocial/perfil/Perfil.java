@@ -1,9 +1,6 @@
 package br.com.zup.edu.nossaredesocial.perfil;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import static br.com.zup.edu.nossaredesocial.perfil.Status.*;
 
@@ -23,6 +20,7 @@ public class Perfil {
 
     private long quantidadeFans;
 
+    @Enumerated(EnumType.STRING)
     private Status status= PADRAO;
 
     public Perfil(String nome, String apelido, String instituicaoDeEnsino, String enderecoImagem) {
@@ -46,5 +44,13 @@ public class Perfil {
 
     public String getApelido() {
         return apelido;
+    }
+
+
+    public void atualizar(String nome, String apelido, String instituicaoDeEnsino, String enderecoImagem){
+        this.nome = nome;
+        this.apelido=apelido;
+        this.instituicaoDeEnsino = instituicaoDeEnsino;
+        this.enderecoImagem = enderecoImagem;
     }
 }
