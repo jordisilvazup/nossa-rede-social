@@ -18,7 +18,8 @@ public class Perfil {
 
     private String enderecoImagem;
 
-    private long quantidadeFans;
+    @OneToOne(mappedBy = "perfil", cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
+    private QuantidadeFanPerfil quantidadeFans;
 
     @Version
     private int versao;
@@ -31,7 +32,7 @@ public class Perfil {
         this.apelido=apelido;
         this.instituicaoDeEnsino = instituicaoDeEnsino;
         this.enderecoImagem = enderecoImagem;
-        this.quantidadeFans=0;
+        this.quantidadeFans= new QuantidadeFanPerfil(this);
     }
 
     /**
@@ -54,5 +55,9 @@ public class Perfil {
         this.apelido=apelido;
         this.instituicaoDeEnsino = instituicaoDeEnsino;
         this.enderecoImagem = enderecoImagem;
+    }
+
+    public void incrementaFan() {
+        this.quantidadeFans.incrementa();
     }
 }
